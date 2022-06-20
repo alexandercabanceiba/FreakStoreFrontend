@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="col-sm-6 offset-3">
+        <br>
+        <h3 class="title" style="color:#106cc8">Registrar Inventario/Venta</h3>
+        <form class = "form" [formGroup]="inventarioForm" (ngSubmit)="crear()">
+            <div class="row">
+                <label for="idTipo" style="color:#106cc8">Tipo</label>
+                <select validar class="form-select" id="idTipo" name="idTipo" formControlName="idTipo" >
+                    <option value="1">Ingreso</option>
+                    <option value="2">Venta</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label for="idArticulo" style="color:#106cc8">Articulo</label>
+                <select validar class="form-select" id="idArticulo" name="idArticulo" formControlName="idArticulo" >
+                    <option *ngFor="let item of listarArticulos | async">{{item.descripcion}}</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="cantidadIngreso" style="color:#106cc8">Cantidad Ingreso</label>
+                    <input validar type="number" class="form-control" id="cantidadIngreso" name="cantidadIngreso" formControlName="cantidadIngreso" >
+                </div>
+                <div class="col-sm-6">
+                    <label for="cantidadVenta" style="color:#106cc8">Cantidad Venta</label>
+                    <input validar type="number" class="form-control" id="cantidadVenta" name="cantidadVenta" formControlName="cantidadVenta" >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="fechaIngreso" style="color:#106cc8">Fecha Ingreso</label>
+                    <input validar type="date" class="form-control" id="fechaIngreso" name="fechaIngreso" formControlName="fechaIngreso" >
+                </div>
+                <div class="col-sm-6">
+                    <label for="precioVenta" style="color:#106cc8">Precio Venta</label>
+                    <input validar type="text" class="form-control" id="precioVenta" name="precioVenta" formControlName="precioVenta" >
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <button type="button" class="btn btn-primary" id="botonRegistrar">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>
