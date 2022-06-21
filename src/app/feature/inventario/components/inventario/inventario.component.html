@@ -5,22 +5,22 @@
         <form class = "form" [formGroup]="inventarioForm" (ngSubmit)="crear()">
             <div class="row">
                 <label for="idTipo" style="color:#106cc8">Tipo</label>
-                <select validar class="form-select" id="idTipo" name="idTipo" formControlName="idTipo" >
-                    <option value="1">Ingreso</option>
-                    <option value="2">Venta</option>
+                <select validar class="form-select" id="idTipo" name="idTipo" formControlName="idTipo" (change)="onChange($event.target.value)">
+                    <option value="1">INGRESO</option>
+                    <option value="2">VENTA</option>
                 </select>
             </div>
 
             <div class="row">
                 <label for="idArticulo" style="color:#106cc8">Articulo</label>
-                <select validar class="form-select" id="idArticulo" name="idArticulo" formControlName="idArticulo" >
-                    <option *ngFor="let item of listarArticulos | async">{{item.descripcion}}</option>
+                <select validar  class="form-select" id="idArticulo" name="idArticulo" formControlName="idArticulo">
+                    <option *ngFor="let item of listarArticulos | async" value = {{item.id}}>{{item.descripcion}}, Precio:{{item.precio}}</option>
                 </select>
             </div>
 
             <div class="row">
                 <div class="col-sm-6">
-                    <label for="cantidadIngreso" style="color:#106cc8">Cantidad Ingreso</label>
+                    <label for="cantidadIngreso" style="color:#106cc8">Cantidad Disponible</label>
                     <input validar type="number" class="form-control" id="cantidadIngreso" name="cantidadIngreso" formControlName="cantidadIngreso" >
                 </div>
                 <div class="col-sm-6">
@@ -36,12 +36,12 @@
                 </div>
                 <div class="col-sm-6">
                     <label for="precioVenta" style="color:#106cc8">Precio Venta</label>
-                    <input validar type="text" class="form-control" id="precioVenta" name="precioVenta" formControlName="precioVenta" >
+                    <input validar type="number" class="form-control" id="precioVenta" name="precioVenta" formControlName="precioVenta" >
                 </div>
             </div>
             <br>
             <div class="row">
-                <button type="button" class="btn btn-primary" id="botonRegistrar">Registrar</button>
+                <button class="btn btn-primary" id="botonGuardar" [disabled]="!inventarioForm.valid">Registrar</button>
             </div>
         </form>
     </div>
