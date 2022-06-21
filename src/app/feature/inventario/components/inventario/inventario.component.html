@@ -12,7 +12,7 @@
             </div>
 
             <div class="row">
-                <label for="idArticulo" style="color:#106cc8">Articulo</label>
+                <label for="idArticulo" style="color:#106cc8">Artículo</label>
                 <select validar  class="form-select" id="idArticulo" name="idArticulo" formControlName="idArticulo">
                     <option *ngFor="let item of listarArticulos | async" value = {{item.id}}>{{item.descripcion}}, Precio:{{item.precio}}</option>
                 </select>

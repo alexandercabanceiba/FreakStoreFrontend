@@ -3,5 +3,5 @@ export interface Articulo {
     idCategoria: number;
     descripcion: string;
     precio: number;
-  }
+}
   

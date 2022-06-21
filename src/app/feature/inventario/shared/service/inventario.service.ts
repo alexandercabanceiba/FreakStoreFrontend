@@ -3,7 +3,6 @@ import { Inventario } from '@inventario/shared/model/inventario';
 import { Venta } from '@inventario/shared/model/venta';
 import { HttpService } from '@core/services/http.service';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +12,7 @@ export class InventarioService {
   constructor(public http: HttpService) { }
 
   public guardarInventario(inventario: Inventario) {
-    return this.http.doPost<Inventario, boolean>(`${environment.endpoint}/inventario`, inventario)
-    .pipe(map((response: any) => response));
+    return this.http.doPost<Inventario, boolean>(`${environment.endpoint}/inventario`, inventario);
   }
 
   public guardarVenta(venta: Venta) {

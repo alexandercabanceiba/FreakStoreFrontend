@@ -20,4 +20,8 @@ export class ArticuloService {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .pipe(map((response: any) => response as Articulo[]));
   }
+
+  public guardarArticulo(articulo: Articulo) {
+    return this.http.doPost<Articulo, boolean>(`${environment.endpoint}/articulo`, articulo);
+  }
 }

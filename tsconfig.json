@@ -27,6 +27,9 @@
       "@core-service/*": [
         "src/app/core/services/*"
       ],
+      "@categoria/*": [
+        "src/app/feature/categoria/*"
+      ],
       "@inventario/*": [
         "src/app/feature/inventario/*"
       ],

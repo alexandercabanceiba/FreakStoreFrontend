@@ -1,1 +1,28 @@
-<p>articulo works!</p>
+<div class="container">
+    <div class="col-sm-6 offset-3">
+        <br>
+        <h3 class="title" style="color:#106cc8">Registrar Artículo</h3>
+        <form class = "form" [formGroup]="articuloForm" (ngSubmit)="crear()">
+            <div class="row">
+                <label for="idCategoria" style="color:#106cc8">Categoría</label>
+                <select validar  class="form-select" id="idCategoria" name="idCategoria" formControlName="idCategoria">
+                    <option *ngFor="let item of listarCategorias | async" value = {{item.id}}>{{item.descripcion}}</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <label for="descripcion" style="color:#106cc8">Descripción</label>
+                <input validar type="text" class="form-control" id="descripcion" name="descripcion" formControlName="descripcion" >
+            </div>
+
+            <div class="row">
+                <label for="precio" style="color:#106cc8">Precio</label>
+                <input validar type="number" class="form-control" id="precio" name="precio" formControlName="precio" >
+            </div>
+            <br>
+            <div class="row">
+                <button class="btn btn-primary" id="botonGuardar" [disabled]="!articuloForm.valid">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

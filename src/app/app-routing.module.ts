@@ -5,7 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: '/inventario', pathMatch: 'full' },
   { path: 'producto', loadChildren: () => import('@producto/producto.module').then(mod => mod.ProductoModule) },
-  { path: 'inventario', loadChildren: () => import('@inventario/inventario.module').then(mod => mod.InventarioModule) }
+  { path: 'articulo', loadChildren: () => import('@articulo/articulo.module').then(mod => mod.ArticuloModule) },
+  { path: 'inventario', loadChildren: () => import('@inventario/inventario.module').then(mod => mod.InventarioModule) },
+  
   
 ];
 

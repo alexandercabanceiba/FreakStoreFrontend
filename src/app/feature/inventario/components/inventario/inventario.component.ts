@@ -81,7 +81,7 @@ export class InventarioComponent implements OnInit {
           fechaIngreso : this.inventarioForm.value.fechaIngreso
         }
         this.inventarioService.guardarInventario(inventario).subscribe(()=>window.alert('inventario registrado'));  
-        this.clear();
+        this.limpiarFormulario();
       }else if(this.inventarioForm.value.idTipo == this.tipoVenta){
 
         let venta: Venta = {
@@ -90,13 +90,12 @@ export class InventarioComponent implements OnInit {
           cantidadVenta: this.inventarioForm.value.cantidadVenta
         }
         this.inventarioService.guardarVenta(venta).subscribe(()=>window.alert('venta registrada'));
-        this.clear();
+        this.limpiarFormulario();
       }
     }
   }
 
-
-  clear() {
+  limpiarFormulario() {
     this.inventarioForm.reset();
   }
 }
