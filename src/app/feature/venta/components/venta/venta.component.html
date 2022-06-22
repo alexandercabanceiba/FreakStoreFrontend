@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="col-sm-6 offset-3">
+        <br>
+        <h3 class="title" style="color:#106cc8">Registrar Venta</h3>
+        <form class = "form" [formGroup]="ventaForm" (ngSubmit)="crear()">
+
+            <div class="row">
+                <label for="idArticulo" style="color:#106cc8">Artículos Inventariados</label>
+                <select validar  class="form-select" id="idArticulo" name="idArticulo" formControlName="idArticulo">
+                    <option *ngFor="let item of listarArticulos | async" value = {{item.id}}>{{item.descripcion}}, Precio:{{item.precio}}</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="cantidadVenta" style="color:#106cc8">Cantidad Venta</label>
+                    <input validar type="number" class="form-control" id="cantidadVenta" name="cantidadVenta" formControlName="cantidadVenta" >
+                </div>
+                <div class="col-sm-6">
+                    <label for="precioVenta" style="color:#106cc8">Precio Venta</label>
+                    <input validar type="number" class="form-control" id="precioVenta" name="precioVenta" formControlName="precioVenta" >
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <button class="btn btn-primary" id="botonGuardar" [disabled]="!ventaForm.valid">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

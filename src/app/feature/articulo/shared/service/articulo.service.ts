@@ -10,13 +10,13 @@ export class ArticuloService {
   constructor(public http: HttpService) {}
 
   public consultar() {
-    return this.http.doGet(`${environment.endpoint}articulo/obtener-articulos-sin-inventario`)
+    return this.http.doGet(`${environment.endpoint}/articulo/obtener-articulos-sin-inventario`)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .pipe(map((response: any) => response as Articulo[]));
   }
 
   public consultarArticulosInventariados() {
-    return this.http.doGet(`${environment.endpoint}articulo/obtener-articulos-inventariados`)
+    return this.http.doGet(`${environment.endpoint}/articulo/obtener-articulos-inventariados`)
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .pipe(map((response: any) => response as Articulo[]));
   }

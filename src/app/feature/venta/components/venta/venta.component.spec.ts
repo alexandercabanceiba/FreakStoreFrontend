@@ -3,18 +3,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpService } from '@core/services/http.service';
-import { InventarioService } from '@inventario/shared/service/inventario.service';
-import { of } from 'rxjs';
-import { ArticuloService } from '@articulo/shared/service/articulo.service';
-
-import { InventarioComponent } from './inventario.component';
 import { Articulo } from '@articulo/shared/model/articulo';
+import { ArticuloService } from '@articulo/shared/service/articulo.service';
+import { HttpService } from '@core/services/http.service';
 
-describe('InventarioComponent', () => {
-  let component: InventarioComponent;
-  let fixture: ComponentFixture<InventarioComponent>;
-  let inventarioService: InventarioService;
+import { VentaComponent } from './venta.component';
+import { of } from 'rxjs';
+import { VentaService } from '../../shared/service/venta.service';
+
+describe('VentaComponent', () => {
+  let component: VentaComponent;
+  let fixture: ComponentFixture<VentaComponent>;
+  let ventaService: VentaService;
   let articuloService: ArticuloService;
   const listaArticulos: Articulo[] = [
     {
@@ -33,7 +33,7 @@ describe('InventarioComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InventarioComponent ],
+      declarations: [ VentaComponent ],
       imports: [
         CommonModule,
         HttpClientModule,
@@ -41,16 +41,17 @@ describe('InventarioComponent', () => {
         ReactiveFormsModule,
         FormsModule
       ],
-      providers: [HttpService, InventarioService, ArticuloService],
+      providers: [HttpService, VentaService, ArticuloService],
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InventarioComponent);
+    fixture = TestBed.createComponent(VentaComponent);
     component = fixture.componentInstance;
-    inventarioService =  TestBed.inject(InventarioService);
-    spyOn(inventarioService, 'guardarInventario').and.returnValue(
+    
+    ventaService = TestBed.inject(VentaService);
+    spyOn(ventaService, 'guardarVenta').and.returnValue(
       of(true)
     );
 
@@ -69,17 +70,16 @@ describe('InventarioComponent', () => {
   });
 
   it('formulario es invalido cuando esta vacio', () => {
-    expect(component.inventarioForm.valid).toBeFalsy();
+    expect(component.ventaForm.valid).toBeFalsy();
   });
 
-  it('Registrando inventario', () => {
-    expect(component.inventarioForm.valid).toBeFalsy();
-    
-    component.inventarioForm.controls.idArticulo.setValue(2);
-    component.inventarioForm.controls.cantidadIngreso.setValue(4);
-    component.inventarioForm.controls.fechaIngreso.setValue('2022-06-19');
+  it('Registrando venta', () => {
+    expect(component.ventaForm.valid).toBeFalsy();
+    component.ventaForm.controls.idArticulo.setValue(10);
+    component.ventaForm.controls.cantidadVenta.setValue(4);
+    component.ventaForm.controls.precioVenta.setValue(48990);
 
-    expect(component.inventarioForm.valid).toBeTruthy();
+    expect(component.ventaForm.valid).toBeTruthy();
 
     spyOn(window, 'alert').and.callFake(()=>console.log('ejecuto alert'));
     component.crear();

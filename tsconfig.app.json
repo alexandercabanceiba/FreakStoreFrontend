@@ -20,8 +20,8 @@
       "@articulo/*": [
         "src/app/feature/articulo/*"
       ],
-      "@producto/*": [
-        "src/app/feature/producto/*"
+      "@venta/*": [
+        "src/app/feature/venta/*"
       ],
       "@shared/*": [
         "src/app/shared/*"
