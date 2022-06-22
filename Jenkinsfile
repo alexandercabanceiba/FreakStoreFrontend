@@ -28,14 +28,14 @@ pipeline {
     stage('Unit Test') {
       steps {
         echo "------------>Testing<------------"
-        sh 'ng test'
+        sh 'npm run test'
       }
     }
 
     stage('Test end-to-end') {
       steps{
         echo "------------>Testing Protractor<------------"
-        sh 'ng e2e'
+        sh 'npm run e2e'
       }
     }
 
