@@ -56,7 +56,7 @@ describe('VentaComponent', () => {
     );
 
     articuloService = TestBed.inject(ArticuloService);
-    spyOn(articuloService, 'consultar').and.returnValue(
+    spyOn(articuloService, 'consultarArticulosInventariados').and.returnValue(
       of(listaArticulos)
     );
     fixture.detectChanges();
