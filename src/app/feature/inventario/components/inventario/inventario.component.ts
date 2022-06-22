@@ -22,6 +22,21 @@ export class InventarioComponent implements OnInit {
     this.construirFormularioInventario();
     this.listarArticulos = this.articuloService.consultar(); 
   }
+  crear(){
+    if(this.inventarioForm.valid){
+      const inventario: Inventario ={
+        idArticulo : this.inventarioForm.value.idArticulo,
+        cantidad : this.inventarioForm.value.cantidadIngreso,
+        fechaIngreso : this.inventarioForm.value.fechaIngreso
+      };
+      this.inventarioService.guardarInventario(inventario).subscribe(()=>window.alert('inventario registrado'));  
+      this.limpiarFormulario();
+    }
+  }
+
+  limpiarFormulario() {
+    this.inventarioForm.reset();
+  }
 
   private construirFormularioInventario(){
     
@@ -32,19 +47,5 @@ export class InventarioComponent implements OnInit {
     });
   }
 
-  crear(){
-    if(this.inventarioForm.valid){
-        let inventario: Inventario ={
-          idArticulo : this.inventarioForm.value.idArticulo,
-          cantidad : this.inventarioForm.value.cantidadIngreso,
-          fechaIngreso : this.inventarioForm.value.fechaIngreso
-        }
-        this.inventarioService.guardarInventario(inventario).subscribe(()=>window.alert('inventario registrado'));  
-        this.limpiarFormulario();
-    }
-  }
-
-  limpiarFormulario() {
-    this.inventarioForm.reset();
-  }
+  
 }

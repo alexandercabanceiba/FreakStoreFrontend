@@ -18,16 +18,16 @@ describe('InventarioComponent', () => {
   let articuloService: ArticuloService;
   const listaArticulos: Articulo[] = [
     {
-        id: 3,
-        idCategoria: 3,
-        descripcion: "PRODUCTO PRUEBA 3",
-        precio: 5000
+      id: 3,
+      idCategoria: 3,
+      descripcion: 'PRODUCTO PRUEBA 3',
+      precio: 5000
     },
     {
-        id: 6,
-        idCategoria: 1,
-        descripcion: "PRODUCTO PRUEBA",
-        precio: 16009
+      id: 6,
+      idCategoria: 1,
+      descripcion: 'PRODUCTO PRUEBA',
+      precio: 16009
     }
   ];
 
@@ -43,7 +43,7 @@ describe('InventarioComponent', () => {
       ],
       providers: [HttpService, InventarioService, ArticuloService],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

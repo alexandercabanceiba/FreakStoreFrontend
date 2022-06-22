@@ -6,14 +6,14 @@ import { VentaRoutingModule } from './venta-routing.module';
 import { VentaService } from './shared/service/venta.service';
 
 @NgModule({
-    declarations: [
-      VentaComponent
-    ],
-    imports: [
-      CommonModule,
-      SharedModule,
-      VentaRoutingModule
-    ],
-    providers:[VentaService]
-  })
-  export class VentaModule { }
+  declarations: [
+    VentaComponent
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    VentaRoutingModule
+  ],
+  providers:[VentaService]
+})
+export class VentaModule { }

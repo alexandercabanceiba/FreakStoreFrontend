@@ -22,14 +22,6 @@ export class ArticuloComponent implements OnInit {
     this.construirFormularioArticulo();
   }
 
-  private construirFormularioArticulo(){
-    this.articuloForm = new FormGroup({
-      idCategoria: new FormControl('', [Validators.required]),
-      descripcion: new FormControl('', [Validators.required]),
-      precio: new FormControl('', [Validators.required])
-    });
-  }
-
   crear(){
     if(this.articuloForm.valid){
       this.articuloService.guardarArticulo(this.articuloForm.value).subscribe(()=>window.alert('Articulo registrado'));  
@@ -40,5 +32,15 @@ export class ArticuloComponent implements OnInit {
   limpiarFormulario() {
     this.articuloForm.reset();
   }
+  
+  private construirFormularioArticulo(){
+    this.articuloForm = new FormGroup({
+      idCategoria: new FormControl('', [Validators.required]),
+      descripcion: new FormControl('', [Validators.required]),
+      precio: new FormControl('', [Validators.required])
+    });
+  }
+
+  
 
 }

@@ -22,35 +22,35 @@ export class VentaComponent implements OnInit {
     this.listarArticulos = this.articuloService.consultarArticulosInventariados(); 
   }
 
-  private construirFormularioVenta(){
-    this.ventaForm = new FormGroup({
-      idArticulo: new FormControl('', [Validators.required]),
-      cantidadVenta: new FormControl('', [Validators.required]),
-      precioVenta: new FormControl('', [Validators.required])
-    });
-  }
-
   crear(){
     if(this.ventaForm.valid){
-        let venta: Venta = {
-          idArticulo: this.ventaForm.value.idArticulo,
-          precioVenta: this.ventaForm.value.precioVenta,
-          cantidadVenta: this.ventaForm.value.cantidadVenta
+      const venta: Venta = {
+        idArticulo: this.ventaForm.value.idArticulo,
+        precioVenta: this.ventaForm.value.precioVenta,
+        cantidadVenta: this.ventaForm.value.cantidadVenta
+      };
+      this.ventaService.guardarVenta(venta).subscribe({
+        next() {
+          window.alert('Venta registrada');
+        },
+        error() {
+          window.alert('Error en el registro de venta. Por favor revisar que la cantidad no supere la disponibilidad, ni el precio se diferente');
         }
-        this.ventaService.guardarVenta(venta).subscribe({
-          next() {
-            window.alert('Venta registrada');
-          },
-          error() {
-            window.alert('Error en el registro de venta. Por favor revisar que la cantidad no supere la disponibilidad, ni el precio se diferente');
-          }
-        });
+      });
 
     }
   }
 
   limpiarFormulario() {
     this.ventaForm.reset();
+  }
+
+  private construirFormularioVenta(){
+    this.ventaForm = new FormGroup({
+      idArticulo: new FormControl('', [Validators.required]),
+      cantidadVenta: new FormControl('', [Validators.required]),
+      precioVenta: new FormControl('', [Validators.required])
+    });
   }
 
 }

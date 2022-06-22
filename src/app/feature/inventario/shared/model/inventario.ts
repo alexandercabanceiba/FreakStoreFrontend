@@ -1,5 +1,5 @@
 export interface Inventario{  
-    idArticulo : number,
-    cantidad: number,
-    fechaIngreso : string
+  idArticulo: number;
+  cantidad: number;
+  fechaIngreso: string;
 }
