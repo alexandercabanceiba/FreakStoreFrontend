@@ -7,14 +7,13 @@ pipeline {
 
   //Opciones específicas de Pipeline dentro del Pipeline
   options {
-    	buildDiscarder(logRotator(numToKeepStr: '3'))
+    buildDiscarder(logRotator(numToKeepStr: '3'))
  		disableConcurrentBuilds()
   }
 
   //Una sección que define las herramientas “preinstaladas” en Jenkins
   tools {
-    jdk 'JDK8_Centos' //Versión preinstalada en la Configuración del Master
-    nodejs 'NodeJS15'
+    nodejs 'NodeJS16'
   }
 
   //Aquí comienzan los “ítems” del Pipeline
@@ -54,7 +53,6 @@ pipeline {
         sh 'npm run build'
       }
     }
-
   }
 
   post {
